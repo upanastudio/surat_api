@@ -107,6 +107,22 @@ class SuratController extends Controller
             'tanggal_lahir_pihak_dua' => $request->tanggal_lahir_pihak_dua,
             'alamat_pihak_dua' => $request->alamat_pihak_dua,
         ];
+        //simpan gambar untuk ttd pihak satu
+        $file = $request->file('ttd_pihak_satu');
+        $extension = $file->getClientOriginalExtension();
+        $file_name ='ttd_satu' . time().'.'.$extension;
+        $data_surat['ttd_pihak_satu']= $file_name;
+        $file->storeAs('file', $file_name, 'public');
+
+        //simpan gambar untuk ttd pihak dua
+        $file = $request->file('ttd_pihak_dua');
+        $extension = $file->getClientOriginalExtension();
+        $file_name = 'ttd_dua' . time().'.'.$extension;
+        $data_surat['ttd_pihak_dua']= $file_name;
+        $file->storeAs('file', $file_name, 'public');
+        
+
+
         $action = Surat::create($data_surat);
 
 
