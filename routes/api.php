@@ -4,6 +4,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CorrespondenceController;
+use App\Http\Controllers\JobDetailController;
+use App\Http\Controllers\JobResultController;
+use App\Http\Controllers\PaymentDetailController;
+use App\Http\Controllers\PihakDuaController;
+use App\Http\Controllers\PihakSatuController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,3 +30,5 @@ Route::post('login', [UserController::class, 'login']);
 
 //Correspondence
 Route::post('correspondece', [CorrespondenceController::class, 'store']);
+
+//Surat
