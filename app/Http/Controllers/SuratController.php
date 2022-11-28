@@ -36,30 +36,30 @@ class SuratController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function simpannn(Request $request){
-         $request->validate([
-            'tujuan'=>'required',
-             'nomor_surat'=> 'required',
-             'tugas_pihak_dua'=> 'required',
-              'start_date' => 'required', 
-                 'end_date' => 'required', 
-            'pembayaran' => 'required',
-            'ttd_pihak_satu' => 'required', 
-            'ttd_pihak_dua'=> 'required',
-            'nama_pihak_satu' => 'required',
-            'jabatan_pihak_satu' =>'required',
-            'alamat_pihak_satu' => 'required',
-                  'nama_pihak_dua' => 'required',
-                  'ktp_pihak_dua' => 'required',
-                      'tempat_lahir_pihak_dua' => 'required',
-                    'tanggal_lahir_pihak_dua' => 'required',
-                           'alamat_pihak_dua' => 'required',
+    // public function simpan(Request $request){
+    //      $request->validate([
+    //         'tujuan'=>'required',
+    //          'nomor_surat'=> 'required',
+    //          'tugas_pihak_dua'=> 'required',
+    //           'start_date' => 'required', 
+    //              'end_date' => 'required', 
+    //         'pembayaran' => 'required',
+    //         'ttd_pihak_satu' => 'required', 
+    //         'ttd_pihak_dua'=> 'required',
+    //         'nama_pihak_satu' => 'required',
+    //         'jabatan_pihak_satu' =>'required',
+    //         'alamat_pihak_satu' => 'required',
+    //               'nama_pihak_dua' => 'required',
+    //               'ktp_pihak_dua' => 'required',
+    //                   'tempat_lahir_pihak_dua' => 'required',
+    //                 'tanggal_lahir_pihak_dua' => 'required',
+    //                        'alamat_pihak_dua' => 'required',
                            
             
 
-        ]);
-        return $request->tujuan;
-    }
+    //     ]);
+    //     return $request->tujuan;
+    // }
     public function store(Request $request)
     {
         $request->validate([
