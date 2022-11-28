@@ -17,7 +17,7 @@ class SuratController extends Controller
      */
     public function index()
     {
-        //
+        dd(Surat::first());
     }
 
     /**
@@ -36,30 +36,7 @@ class SuratController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function simpan(Request $request){
-    //      $request->validate([
-    //         'tujuan'=>'required',
-    //          'nomor_surat'=> 'required',
-    //          'tugas_pihak_dua'=> 'required',
-    //           'start_date' => 'required', 
-    //              'end_date' => 'required', 
-    //         'pembayaran' => 'required',
-    //         'ttd_pihak_satu' => 'required', 
-    //         'ttd_pihak_dua'=> 'required',
-    //         'nama_pihak_satu' => 'required',
-    //         'jabatan_pihak_satu' =>'required',
-    //         'alamat_pihak_satu' => 'required',
-    //               'nama_pihak_dua' => 'required',
-    //               'ktp_pihak_dua' => 'required',
-    //                   'tempat_lahir_pihak_dua' => 'required',
-    //                 'tanggal_lahir_pihak_dua' => 'required',
-    //                        'alamat_pihak_dua' => 'required',
-                           
-            
 
-    //     ]);
-    //     return $request->tujuan;
-    // }
     public function store(Request $request)
     {
         $request->validate([
@@ -84,7 +61,8 @@ class SuratController extends Controller
 
             'job_detail' => 'required',
             'job_result' => 'required',
-            'payment_detail' =>'required'
+            'payment_detail' =>'required',
+            'status' => 'required|numeric'
         ]);
 
         $data_surat  = [
@@ -106,6 +84,7 @@ class SuratController extends Controller
             'tempat_lahir_pihak_dua' => $request->tempat_lahir_pihak_dua,
             'tanggal_lahir_pihak_dua' => $request->tanggal_lahir_pihak_dua,
             'alamat_pihak_dua' => $request->alamat_pihak_dua,
+            'status' => $request->status
         ];
         //simpan gambar untuk ttd pihak satu
         $file = $request->file('ttd_pihak_satu');
@@ -162,7 +141,12 @@ class SuratController extends Controller
         
 
         if ($action){
-            return true;
+            if ($request->status == 1) {
+                return true;
+            }
+            elseif($request->status == 2){
+                return $action;
+            }
         }else {
                return false;
         }
@@ -178,7 +162,12 @@ class SuratController extends Controller
      */
     public function show(Surat $surat)
     {
-        //
+        $surat['jobdetails']= $surat->jobdetails;
+        $surat['jobresults']= $surat->jobresults;
+        $surat['paymentdetails']= $surat->paymentdetails;
+
+
+        return $surat;
     }
 
     /**

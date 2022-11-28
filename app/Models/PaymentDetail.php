@@ -12,4 +12,8 @@ class PaymentDetail extends Model
     protected $guarded= [
         'id'
     ];
+
+        public function surat(){
+        return $this->belongsTo(Surat::class, 'surat_id');
+    }
 }

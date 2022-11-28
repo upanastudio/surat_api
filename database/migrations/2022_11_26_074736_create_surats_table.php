@@ -32,6 +32,8 @@ class CreateSuratsTable extends Migration
             $table->string('tempat_lahir_pihak_dua');
             $table->string('tanggal_lahir_pihak_dua');
             $table->text('alamat_pihak_dua');
+
+            $table->enum('status', ['Draft', 'Printed']);
           $table->timestamps();
         });
     }

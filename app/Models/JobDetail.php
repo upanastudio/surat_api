@@ -12,4 +12,10 @@ class JobDetail extends Model
     protected $guarded=[
         'id'
     ];
+
+
+    // relasi, job details hanya memiliki satu surat
+    public function surat(){
+        return $this->belongsTo(Surat::class, 'surat_id');
+    }
 }
